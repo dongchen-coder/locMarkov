@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NI;
 int NJ;
@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
     
     dumpRIHistogram(conf);
     predictionWithBmc(conf);
-    predictionWithRefBmc(conf);   
+    //predictionWithRefBmc(conf);   
 	return 0;
 }
 

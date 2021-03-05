@@ -121,14 +121,15 @@ uint64_t genAddr(uint64_t addr, vector< vector<double> >* bmc_used) {
             double flip_prob = double((*bmc_used)[i][1]) / ((*bmc_used)[i][0] + (*bmc_used)[i][1]);
             double rand_num = (double) rand() / (RAND_MAX);
             if (rand_num <= flip_prob) {
-                addr |= (1 << i);
+                addr |= (((uint64_t) 1) << i);
             }
         } else {
             double flip_prob = double((*bmc_used)[i][2]) / ((*bmc_used)[i][2] + (*bmc_used)[i][3]);
             double rand_num = (double) rand() / (RAND_MAX);
             if (rand_num <= flip_prob) {
-                addr -= (1 << i);
+                addr -= (((uint64_t 1) << i);
             }
+            
         }
     }
     return addr;
