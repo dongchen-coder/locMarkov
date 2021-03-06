@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int N;
 
@@ -115,7 +115,12 @@ int main(int argc, char const *argv[])
 
     gemver_trace(alpha, beta, A, u1, v1, u2, v2, w, x, y, z);
  	
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(N);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

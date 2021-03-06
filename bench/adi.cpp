@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int N;
 int TSTEPS;
@@ -126,7 +126,12 @@ int main(int argc, char* argv[]) {
 
 	adi_trace(p, q, v, u);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(N) + "_" + to_string(TSTEPS);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
 	return 0;
 }

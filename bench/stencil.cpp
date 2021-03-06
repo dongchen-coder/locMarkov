@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int DIM_SIZE;
 
@@ -49,7 +49,12 @@ int main(int argc, char* argv[]) {
 
     stencil_trace(a, b, DIM_SIZE);
     
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(DIM_SIZE);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

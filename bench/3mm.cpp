@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NI;
 int NJ;
@@ -135,7 +135,12 @@ int main(int argc, char* argv[]) {
 
     mm3_cpu_trace(a, b, c, d, e, f, g);
     
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(NI) + "_" + to_string(NJ) + "_" + to_string(NK) + "_" + to_string(NL) + "_" + to_string(NM);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

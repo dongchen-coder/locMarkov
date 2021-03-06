@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 #include <math.h>
 
@@ -112,7 +112,12 @@ int main(int argc, char* argv[]) {
 
 	nussinov_trace(table, seq);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(N);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
 	return 0;
 }

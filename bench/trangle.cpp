@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 void trangle_trace(int *a, int *b, unsigned int i_size, unsigned int j_size) {
     
@@ -38,7 +38,12 @@ int main(int argc, char* argv[]) {
 
     trangle_trace(a, b, ISIZE, JSIZE);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(ISIZE) + "_" + to_string(JSIZE);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

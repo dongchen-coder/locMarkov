@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NI;
 int NJ;
@@ -73,7 +73,12 @@ int main(int argc, char* argv[])
 
     conv2D_trace(A, B);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(NI) + "_" + to_string(NJ);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

@@ -164,10 +164,10 @@ void predictionWithBmc(string conf = "") {
         pre_t_addrs.push_back(((uint64_t) rand() << 32) | rand());
     }
     
-    for (auto elm : pre_t_addrs) {
-        cout << elm << " ";
-    }
-    cout << endl;
+    //for (auto elm : pre_t_addrs) {
+    //    cout << elm << " ";
+    //}
+    //cout << endl;
     
     uint64_t addr = pre_t_addrs.back();
     

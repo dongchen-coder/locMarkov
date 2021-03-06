@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NR;
 int NQ;
@@ -62,7 +62,12 @@ int main(int argc, char* argv[]) {
 	
 	doitgen_trace(sum, A, C4);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(NR) + "_" + to_string(NQ) + "_" + to_string(NP);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
 	return 0;
 }

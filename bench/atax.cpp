@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NX;
 int NY;
@@ -83,7 +83,12 @@ int main(int argc, char* argv[]) {
 
     atax_cpu_trace(A, x, y, tmp, NX, NY);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(NX) + "_" + to_string(NY);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

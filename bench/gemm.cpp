@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int NI;
 int NJ;
@@ -71,7 +71,12 @@ int main(int argc, char* argv[]) {
 
     gemm_trace(alpha, beta, A, B, C);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(NI) + "_" + to_string(NJ) + "_" + to_string(NK);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
     return 0;
 }

@@ -1,4 +1,4 @@
-#include "./utility/rt.h"
+#include "./utility/mc_kth.h"
 
 int _PB_TMAX;
 int _PB_NY;
@@ -82,7 +82,12 @@ int main(int argc, char* argv[]) {
 
 	fdtd_2d_trace(_fict_, ey, ex, hz);
 
-    dumpRIHistogram();
+    string name(argv[0]);
+    size_t found = name.find_last_of("/\\") + 1;
+    string conf = name.substr(found, name.size()-found) + "_" + to_string(_PB_TMAX) + "_" + to_string(_PB_NX) + "_" + to_string(_PB_NY);
+    
+    dumpRIHistogram(conf);
+    predictionWithBmc(conf);
     
 	return 0;
 }
